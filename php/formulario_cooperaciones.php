@@ -40,7 +40,7 @@
 							
 			<div class="form-group">
 				<label for="descripcion">Descripcion de Cooperacion:</label>
-					<textarea class="form-control" value="<?php echo $cooperaciones->descripcion; ?>"  name="descripcion" placeholder="Escribe aqui..." required ></textarea>
+					<textarea class="form-control" name="descripcion" placeholder="Escribe aqui..." required ><?php echo $cooperaciones->descripcion; ?></textarea>
 						<style>
 							textarea{resize: none;}
 						</style>

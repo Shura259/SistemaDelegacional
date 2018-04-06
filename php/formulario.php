@@ -19,10 +19,16 @@
 		<form role="form" method="post" action="php/actualizar.php">
 			
 			<div class="form-group">
-				<label for="categoria">Categoria:</label>
-					<input type="text" class="form-control" value="<?php echo $jefe_familia->categoria; ?>"  name="categoria" required >
+								<label for="categoria">Categoria:</label>
+								<select name="categoria" class="form-control">
+								<option selected="selected"><?php echo $jefe_familia->categoria; ?></option> 
+								<option  value="Comunero">Comunero</option> 			
+								<option  value="Ejidatario">Ejidatario</option> 				
+								</select>	
 			</div>
+
 			
+
 			<div class="form-group">
 				<label for="nombre">Nombre(S):</label>
 					<input type="text" class="form-control" value="<?php echo $jefe_familia->nombre_jefe; ?>"  name="nombre_jefe" placeholder="Nombre" required >
@@ -50,7 +56,7 @@
 							
 			<div  id="motivo" class="form-group">
 				<label for="motivo" class="col-md-4 control-label">Especifica el  motivo:</label>
-					<textarea rows="4" cols="20"  class="form-control" value="<?php echo $jefe_familia->motivo_jefe; ?>" name="motivo_jefe" placeholder="Especifica el motivo" required></textarea>
+					<textarea rows="4" cols="20" class="form-control" name="motivo_jefe" placeholder="Especifica el motivo" required><?php echo $jefe_familia->motivo_jefe; ?></textarea>
 						<style>
 							textarea{resize: none;}
 						</style>

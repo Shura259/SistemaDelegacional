@@ -5,7 +5,9 @@
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 		<script src="js/jquery.min.js"></script>
 	</head>
-	<body>
+	
+	
+<body background="./images/fondo.jpg">
 	<?php include "php/navbar.php"; ?>
 <div class="container">
 <div class="row">
@@ -43,7 +45,7 @@
 						
 							<div class="form-group">
 								<label for="categoria">Categoria:</label>
-								<select name="categoria" class="form-control">
+								<select name="categoria" class="form-control" id="select">
 								<option selected="selected">--Selecciona--</option> 
 								<option value="Comunero">Comunero</option> 			
 								<option value="Ejidatario">Ejidatario</option> 				

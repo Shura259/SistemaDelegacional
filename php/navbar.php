@@ -167,8 +167,8 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="normateca.php">Normateca</a></li>
-            <li><a href="ver_reglamento">Reglamento</a></li>
+            <li><a href="ver_normateca.php">Normateca</a></li>
+            <li><a href="ver_reglamentos.php">Reglamento</a></li>
 			<li><a href="lista_usuarios.php">Configuracion</a></li>
             <li class="active"><a href="">Salir <span class="sr-only"></span></a></li>
           </ul>
