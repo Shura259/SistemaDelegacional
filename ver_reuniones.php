@@ -4,7 +4,7 @@
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 		<script src="js/jquery.min.js"></script>
 	</head>
-	<body>
+	<body background="./images/fondo.jpg">
 	<?php include "php/navbar.php"; ?>
 <div class="container">
 <div class="row">

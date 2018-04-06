@@ -44,7 +44,7 @@
 							
 			<div class="form-group">
 				<label for="descripcion">Descripcion de Reunion:</label>
-					<textarea class="form-control" value="<?php echo $reuniones->descripcion; ?>"  name="descripcion"  placeholder="Escribe aqui..."></textarea>
+					<textarea class="form-control" name="descripcion"  placeholder="Escribe aqui..."><?php echo $reuniones->descripcion; ?></textarea>
 						<style>
 							textarea{resize: none;}
 						</style>

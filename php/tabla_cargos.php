@@ -24,7 +24,7 @@ $query = $con->query($sql1);
 	
 	<td><?php echo $r["id_cargo_persona"]; ?></td>
 	<td><?php echo $r["nombre_habitante"]; ?></td>
-	<td><?php echo $r["id_cargo"]; ?></td>
+	<td><?php echo $r["cargo"]; ?></td>
 	<td><?php echo $r["inicio_cargo"]; ?></td>
 	<td><?php echo $r["fin_cargo"]; ?></td>
 	<td><?php echo $r["trabajos_realizados"]; ?></td>

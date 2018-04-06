@@ -45,7 +45,7 @@
 							
 			<div class="form-group">
 				<label for="descripcion">Descripcion de Faena:</label>
-					<textarea class="form-control" value="<?php echo $faenas->descripcion; ?>" name="descripcion" placeholder="Escribe aqui..." value="" required ></textarea>
+					<textarea class="form-control" name="descripcion" placeholder="Escribe aqui..." value="" required ><?php echo $faenas->descripcion; ?></textarea>
 						<style>
 							textarea{resize: none;}
 						</style>

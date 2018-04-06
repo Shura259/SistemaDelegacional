@@ -1,3 +1,23 @@
+<?php 
+include "php/conexion.php";
+							$sql="SELECT * from cargos";
+							$result = $con->query($sql); 
+							 
+							if ($result->num_rows > 0) 
+							{
+								$combobit="";
+								while ($row = $result->fetch_array(MYSQLI_ASSOC)) 
+								{
+									$combobit .=" <option value='".$row['cargo']."'>".$row['cargo']."</option>"; 
+								}
+							}
+							else
+							{
+								echo "No hubo resultados";
+							}
+							$con->close(); //cerramos la conexión
+							?>
+							
 <html>
 	<head>
 		<title>Cargos de Habitantes</title>
@@ -5,21 +25,19 @@
 		<script src="js/jquery.min.js"></script>
 		<script type="text/javascript"></script>
 	</head>
-	<body>
+	<body background="./images/fondo.jpg">
 	<?php include "php/navbar.php"; ?>
 <div class="container">
 <div class="row">
 <div class="col-md-12">
 		<h2 align="center"><font color ="#0000FF">Registro de Cargos</font></h2><br>
-		
-		
-		<a href="registro_habitantes.php"><button type="submit" class="btn btn-info">Nuevo Cargo</button></a>
-		
-		
-<!-- Button trigger modal -->
-  <a data-toggle="modal" href="#myModal" class="btn btn-primary pull-right">Agregar Cargo</a>
 <br><br>
   <!-- Modal -->
+  <div class="alert alert-info" role="alert" align="right">
+	<a href="#"><button type="submit" class="btn btn-info pull-left">Nuevo Cargo</button></a>									
+	<a data-toggle="modal" href="#myModal" class="btn btn-primary">Agregar Cargo</a>
+</div>
+
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -40,6 +58,13 @@
 									<input type="text" class="form-control" name="nombre_habitante" placeholder="Nombre" required >
 							</div>
 							
+							<div class="form-group">
+								<label for="cargo">Selecciona un cargo:</label>
+								<select name="cargo" class="form-control">
+								   <option selected="selected">--Elige un cargo--</option>
+								   <?php echo $combobit; ?>
+							    </select>
+							</div>
 							
 							<div class="form-group">
 								<label for="inicio_cargo">Fecha de Inicio de Cargo:</label>
@@ -67,8 +92,8 @@
 										</style>
 							</div>
 
-  <button type="submit" class="btn btn-primary">Agregar</button>
-</form>
+						  <button type="submit" class="btn btn-primary">Agregar</button>
+						</form>
         </div>
 
       </div><!-- /.modal-content -->
