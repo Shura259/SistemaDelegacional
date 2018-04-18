@@ -1,9 +1,9 @@
 <?php
 
 
-	include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
+	include('is_logged.php');
 	/* Connect To Database*/
-	require_once ("../php/conexion.php");//Contiene funcion que conecta a la base de datos
+	require_once ("../php/conexion.php");
 	//Archivo de funciones PHP
 	include("../funciones.php");
 	$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
@@ -32,10 +32,10 @@
 		
 	}
 	if($action == 'ajax'){
-		// escaping, additionally removing everything that could be (html/javascript-) code
+		
          $q = mysqli_real_escape_string($con,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
 		 $id_categoria =intval($_REQUEST['id_categoria']);
-		 $aColumns = array('codigo_producto', 'nombre_producto');//Columnas de busqueda
+		 $aColumns = array('codigo_producto', 'nombre_producto');
 		 $sTable = "products";
 		 $sWhere = "";
 		
@@ -51,13 +51,13 @@
 			$sWhere .=" and id_categoria='$id_categoria'";
 		}
 		$sWhere.=" order by id_producto desc";
-		include 'pagination.php'; //include pagination file
+		include 'pagination.php'; 
 		//pagination variables
 		$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
-		$per_page = 18; //how much records you want to show
-		$adjacents  = 4; //gap between pages after number of adjacents
+		$per_page = 18; 
+		$adjacents  = 4; 
 		$offset = ($page - 1) * $per_page;
-		//Count the total number of row in your table*/
+		
 		$count_query   = mysqli_query($con, "SELECT count(*) AS numrows FROM $sTable  $sWhere");
 		$row= mysqli_fetch_array($count_query);
 		$numrows = $row['numrows'];

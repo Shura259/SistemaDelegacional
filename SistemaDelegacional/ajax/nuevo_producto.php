@@ -1,7 +1,7 @@
 <?php
-include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
+include('is_logged.php');
 		
-	/*Inicia validacion del lado del servidor*/
+	
 	if (empty($_POST['codigo'])) {
            $errors[] = "Código vacío";
         } else if (empty($_POST['nombre'])){
@@ -16,10 +16,10 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 			$_POST['stock']!="" &&
 			!empty($_POST['precio'])
 		){
-		/* Connect To Database*/
-		require_once ("../php/conexion.php");//Contiene funcion que conecta a la base de datos
+		
+		require_once ("../php/conexion.php");
 		include("../funciones.php");
-		// escaping, additionally removing everything that could be (html/javascript-) code
+		
 		$codigo=mysqli_real_escape_string($con,(strip_tags($_POST["codigo"],ENT_QUOTES)));
 		$nombre=mysqli_real_escape_string($con,(strip_tags($_POST["nombre"],ENT_QUOTES)));
 		$stock=intval($_POST['stock']);

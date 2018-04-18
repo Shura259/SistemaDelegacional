@@ -1,6 +1,6 @@
 <?php
-	include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
-	/*Inicia validacion del lado del servidor*/
+	include('is_logged.php');
+	
 	if (empty($_POST['mod_id'])) {
            $errors[] = "ID vacío";
         }else if (empty($_POST['mod_codigo'])) {
@@ -18,9 +18,9 @@
 			$_POST['mod_categoria']!="" &&
 			!empty($_POST['mod_precio'])
 		){
-		/* Connect To Database*/
-		require_once ("../php/conexion.php");//Contiene funcion que conecta a la base de datos
-		// escaping, additionally removing everything that could be (html/javascript-) code
+		
+		require_once ("../php/conexion.php");
+		
 		$codigo=mysqli_real_escape_string($con,(strip_tags($_POST["mod_codigo"],ENT_QUOTES)));
 		$nombre=mysqli_real_escape_string($con,(strip_tags($_POST["mod_nombre"],ENT_QUOTES)));
 		$categoria=intval($_POST['mod_categoria']);
