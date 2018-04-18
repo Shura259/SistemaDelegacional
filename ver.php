@@ -1,17 +1,46 @@
+<?php 
+
+include "php/conexion.php";
+include "funciones.php";
+
+							$sql="SELECT * from religion";
+							$result = $con->query($sql); 
+							 
+							if ($result->num_rows > 0) 
+							{
+								$combobit="";
+								while ($row = $result->fetch_array(MYSQLI_ASSOC)) 
+								{
+									$combobit .=" <option value='".$row['religion']."'>".$row['religion']."</option>"; 
+								}
+							}
+							else
+							{
+								echo "No hubo resultados";
+							}
+							$con->close(); //cerramos la conexión
+							?>
+							
 
 <html>
 	<head>
 		<title>Sistema Delegacional</title>
+		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 		<script src="js/jquery.min.js"></script>
+		<script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script src="https://code.jquery.com/jquery-1.12.2.min.js"
+              integrity="sha256-lZFHibXzMHo3GGeehn1hudTAP3Sc0uKXBXAzHX1sjtk="
+              crossorigin="anonymous"></script>
+		
+	<?php include("head.php");?>
 	</head>
 	
 	
-<body background="./images/fondo.jpg">
-	<?php include "php/navbar.php"; ?>
+<body background="">
+	<?php include "php/navbar.php";?> <br><br><br><br><br><br>
 <div class="container">
 <div class="row">
-<div class="col-md-12">
 		<h2 align="center"><font color ="#0000FF">Registro de Habitantes</font></h2>
 <!-- Button trigger modal -->
   
@@ -22,10 +51,10 @@
 	<a data-toggle="modal" href="#myModal" class="btn btn-primary">Agregar</a>
 	<label for="categoria" class="col-md-1 control-label pull-left">Categoria:</label>
 										<div class="col-md-3">
-											<select name="categoria" class="form-control">
+											<select name="categoria" id="" class="form-control">
 												<option selected="selected">--Selecciona--</option> 
-												<option value="">Comunero</option> 
-												<option value="">Ejidatario</option> 
+												<option value="Comunero">Comunero</option> 
+												<option value="Ejidatario">Ejidatario</option> 
 											</select>
 										</div>
 </div>
@@ -41,19 +70,29 @@
 		
         <div class="modal-body">
 						
-						<form role="form" method="post" action="php/agregar.php">
+						<form role="form" name="formulario" id="formulario" method="post" action="php/agregar.php">
 						
 							<div class="form-group">
 								<label for="categoria">Categoria:</label>
-								<select name="categoria" class="form-control" id="select">
-								<option selected="selected">--Selecciona--</option> 
+								<select name="categoria"  id="id_categoria" class="form-control">
+								<option value="selected" selected="selected">--Selecciona--</option> 
 								<option value="Comunero">Comunero</option> 			
 								<option value="Ejidatario">Ejidatario</option> 				
 								</select>	
 							</div>
-
+							
 							<div class="form-group">
-								<label for="nombre">Nombre(S):</label>
+								<label for="fecha_inicio">Fecha de Inicio como Ejidatario:</label>
+								<input id="id_input" type="date" class="form-control"  name="fecha_inicio">
+							</div>
+							
+							<div class="form-group">
+								<label for="fecha_termino">Fecha de Termino como Ejidatario:</label>
+								<input id="id_input" type="date" class="form-control"  name="fecha_termino">
+							</div>
+							
+							<div class="form-group">
+								<label for="nombre">Nombre(s):</label>
 								<input type="text" class="form-control"  name="nombre_jefe" placeholder="Nombre" value="" required >
 							</div>
 							
@@ -68,19 +107,53 @@
 							</div>
 							
 							<div class="form-group">
+								<label for="edad">Edad:</label>
+								<input type="number" class="form-control"  name="edad" required >
+							</div>
+							
+							<div class="form-group">
 								<label for="fecha_nacimiento">Fecha de Nacimiento:</label>
 								<input type="date" class="form-control" name="fecha_nacimiento_jefe" required >
 							</div>
 							
-							
-							<div id="especifica_otra" class="form-group">
-								<label for="especifica">Especifica religion</label>
-								<input type="text" class="form-control"  name="especifica_religion" placeholder="Escribe aqui..." required>
+							<div class="form-group">
+								<label for="sexo">Sexo:</label>
+								<select name="sexo" class="form-control" id="sexo">
+								<option selected="selected">--Selecciona--</option> 
+								<option value="Hombre">Hombre</option> 			
+								<option value="Mujer">Mujer</option> 				
+								</select>	
 							</div>
 							
+							<div class="form-group">
+								<label for="religion">Selecciona Religion:</label>
+								<select name="religion" class="form-control" onChange="MostrarReligion(this)" required>
+								   <option selected="selected">--Selecciona--</option>
+								   <?php echo $combobit; ?>
+								   <option name="otra">Otra</option>
+							    </select>
+							</div>
 							
-							<div  id="motivo" class="form-group">
-								<label for="motivo">Especifica el  motivo:</label>
+							<div class="form-group">
+								<label for="especifica_religion">Especifica religion</label>
+								<input type="text" class="form-control"  name="especifica_religion" placeholder="Escribe tu religion" required>
+							</div>
+						
+							<div class="form-group">
+								<label for="servicio">Servicios con los que cuenta</label><br>
+								<input  type="checkbox" name="servicio[]" id="Luz" value="Luz">		Luz <br>
+								<input  type="checkbox" name="servicio[]" id="Agua" value="Agua">    	Agua <br>
+								<input  type="checkbox" name="servicio[]" id="Drenaje" value="Drenaje">    	Drenaje
+							</div>
+							
+							<div class="form-group">
+								<label for="reside">El Habitante Reside aqui:</label> <br>
+								<input type="radio" name="reside" id="reside1" value="Si"> Si<p>
+								<input type="radio" name="reside" id="reside2" value="No"> No
+							</div>
+							
+							<div  id="motivo_jefe" class="form-group">
+								<label for="motivo_jefe">Especifica el motivo:</label>
 								<textarea rows="4" cols="20"  class="form-control" name="motivo_jefe" placeholder="Especifica el motivo" required></textarea>
 										<style>
 									textarea{resize: none;}
@@ -90,17 +163,32 @@
 							
 							<div class="form-group">
 								<label for="domicilio">Domicilio completo</label>
-								<input type="text" class="form-control"  name="domicilio_jefe" placeholder="Domicilio completo" required>
+								<input type="text" class="form-control"  name="domicilio" placeholder="Domicilio completo" required>
+							</div>
+							
+							<div class="form-group">
+								<label for="nuevo">El habitante es nuevo</label><br>
+								<input  type="radio" name="nuevo" value="Si">  Si <p>
+								<input  type="radio" name="nuevo" value="No">  No
 							</div>
 							
 							<div class="form-group">
 								<label for="monto_cuota">Monto de cuota</label>
 								<input type="number" class="form-control" name="monto_cuota" placeholder="$" required>
 							</div>
+							
+							<div class="form-group">
+								<label>Subir Archivos Correspondientes</label><br>
+									<td> Carta de Buena Conducta
+									<input type="file"  name="carta_bconducta" required>
+									</td> <br>
+									<td> Carta de Radicacion: 
+									<input type="file"  name="carta_radicacion" required>
+							</div>
 
-							<button type="submit" class="btn btn-primary">Agregar</button>
+							<button type="submit" name="submit" class="btn btn-primary">Agregar</button>
 						</form>
-        </div>
+		 </div>
 
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -108,9 +196,8 @@
 
 	<?php include "php/tabla_habitantes.php"; ?>
 </div>
-</div>
-</div>
 
 <script src="bootstrap/js/bootstrap.min.js"></script>
+	<?php include("footer.php");?>
 	</body>
 </html>

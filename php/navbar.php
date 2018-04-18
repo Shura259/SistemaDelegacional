@@ -1,4 +1,21 @@
+
 <style type="text/css">
+* {
+  padding: 0;
+  margin: 0;
+}
+ 
+/*Agregamos margenes inferiores a los parrafos*/
+p {
+  margin-bottom: 20px;
+}
+
+header {
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+}
+
 .navbar {
   background-color: #05335b;
 }
@@ -125,8 +142,17 @@
   color: #dbe0ed;
   background-color: #0d5a91;
 }
-</style>
 
+
+</style>
+<head>
+</head>
+<script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<header>
+<?php
+		if (isset($title))
+		{
+	?>
 <nav class="navbar navbar-default" role="navigation">
 <div class="container">
   <!-- Brand and toggle get grouped for better mobile display -->
@@ -163,14 +189,14 @@
 				</ul>
 				
 			<li><a href="#about">Tesoreria</a></li>
-			<li><a href="inventario.php">Inventario</a></li>
+			<li class="<?php if (isset($active_productos)){echo $active_productos;}?>"><a href="stock.php"><i class='glyphicon glyphicon-barcode'></i> Inventario</a></li>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="ver_normateca.php">Normateca</a></li>
+            <li><a href="ver_archivos.php">Normateca</a></li>
             <li><a href="ver_reglamentos.php">Reglamento</a></li>
 			<li><a href="lista_usuarios.php">Configuracion</a></li>
-            <li class="active"><a href="">Salir <span class="sr-only"></span></a></li>
+            <li><a href="login.php?logout"><i class='glyphicon glyphicon-off'></i> Salir</a></li>
           </ul>
         </div>
   
@@ -183,3 +209,7 @@
   </div><!-- /.navbar-collapse -->
 </div>
 </nav>
+<?php
+		}
+	?>
+</header>

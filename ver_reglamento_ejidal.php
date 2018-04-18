@@ -3,11 +3,12 @@
 		<title>Sistema Delegacional</title>
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 		<script src="js/jquery.min.js"></script>
+		<?php include("head.php");?>
 	</head>
 	
 	
-<body background="./images/fondo.jpg">
-	<?php include "php/navbar.php"; ?>
+<body background="">
+	<?php include "php/navbar.php"; ?><br><br><br><br><br><br>
 <div class="container">
 <div class="row">
 <div class="col-md-12">
@@ -77,5 +78,6 @@
 </div>
 
 <script src="bootstrap/js/bootstrap.min.js"></script>
+<?php include("footer.php");?>
 	</body>
 </html>

@@ -3,7 +3,7 @@
 include "conexion.php";
 
 $user_id=null;
-$sql1= "select * from normateca";
+$sql1= "select * from archivos";
 $query = $con->query($sql1);
 ?>
 
@@ -19,8 +19,8 @@ $query = $con->query($sql1);
 <?php while ($r=$query->fetch_array()):?>
 <tr>
 	
-	<td><?php echo $r["id_normateca"]; ?></td>
-	<td><?php echo $r["nombre_archivo"]; ?></td>
+	<!-- <td><?php echo $r["id_normateca"]; ?></td>
+	<td><?php echo $r["nombre_archivo"]; ?></td>-->
 	<td><?php echo $r["archivo"]; ?></td>
 	<td colspan="4" align="center" style="width:200px;" bgcolor="lavender">
 		<a href="editar_usuarios.php" class="btn btn-xs">Ver detalles</a>

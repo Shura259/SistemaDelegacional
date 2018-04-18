@@ -24,9 +24,10 @@ include "php/conexion.php";
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 		<script src="js/jquery.min.js"></script>
 		<script type="text/javascript"></script>
+		<?php include("head.php");?>
 	</head>
-	<body background="./images/fondo.jpg">
-	<?php include "php/navbar.php"; ?>
+	<body background="">
+	<?php include "php/navbar.php"; ?><br><br><br><br><br><br>
 <div class="container">
 <div class="row">
 <div class="col-md-12">
@@ -107,5 +108,6 @@ include "php/conexion.php";
 </div>
 
 <script src="bootstrap/js/bootstrap.min.js"></script>
+<?php include("footer.php");?>
 	</body>
 </html>

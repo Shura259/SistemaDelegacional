@@ -64,9 +64,10 @@
 		<title>Sistema Delegacional</title>
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 		<script src="js/jquery.min.js"></script>
+		<?php include("head.php");?>
 	</head>
-		<body background="./images/fondo.jpg">
-		<?php include "php/navbar.php"; ?>
+		<body background="">
+		<?php include "php/navbar.php"; ?><br><br><br><br><br>
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
@@ -81,7 +82,7 @@
 					rotulo_title();
 					</SCRIPT>
 			-->		<font face=bold 90% monospace; size=6><marquee scrollamount="10" bgcolor="#f0e427">Reglamentos Delegacionales</marquee></font>
-						<br><br><br><br><br><br><br><br>
+						<br><br><br><br><br><br><br>
 							<section id="projects">
 							<div class="row" align="center">
 								<article class="col-md-6">
@@ -107,6 +108,7 @@
 					</div>
 				</div>
 			</div>
+			<?php include("footer.php");?>
 		</body>
 </html> 
 	
